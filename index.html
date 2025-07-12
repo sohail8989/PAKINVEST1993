@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PakInvest</title>
+    <style>
+        body { font-family: 'Noto Nastaliq Urdu', sans-serif; background: #f4f4f4; padding: 20px; text-align: right; }
+        .plan { background: white; border: 1px solid #ccc; border-radius: 10px; margin: 10px 0; padding: 15px; }
+        .plan h3 { margin: 0 0 10px; }
+        .buy-btn { background: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        .form-container { background: #fff; border: 1px solid #ccc; padding: 20px; margin-top: 10px; border-radius: 10px; }
+        .form-container input, .form-container select { width: 100%; padding: 10px; margin: 10px 0; }
+        .icons img { height: 30px; margin: 5px; }
+        .payment-details { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>📈 خوش آمدید PakInvest میں</h1>
+<p>آپ کا اعتماد، ہمارا عزم۔ روزانہ 15٪ منافع حاصل کریں۔</p>
+
+<div id="plans">
+    <!-- Plans go here -->
+</div>
+
+<script>
+    const plansContainer = document.getElementById("plans");
+    const animals = ["Lion", "Elephant", "Cheetah", "Horse", "Deer", "Fox", "Monkey", "Dog", "Cat", "Rabbit", "Goat", "Camel", "Bear", "Giraffe", "Buffalo", "Eagle", "Fly", "Rat", "Owl", "Fish", "Cow", "Bird", "Pigeon", "Ostrich", "Falcon"];
+
+    for (let i = 0; i < 25; i++) {
+        const amount = 10000 + (i * 20000);
+        const plan = document.createElement("div");
+        plan.className = "plan";
+        plan.innerHTML = `<h3>🐾 Plan ${i+1} - ${animals[i]}</h3>
+                          <p>سرمایہ کاری رقم: Rs. ${amount}</p>
+                          <p>روزانہ منافع: Rs. ${(amount * 0.15).toFixed(0)}</p>
+                          <div class="form-container">
+                              <h3>Buy This Plan</h3>
+                              <input type="text" placeholder="Enter Your Name">
+                              <input type="text" placeholder="CNIC Number">
+                              <input type="text" placeholder="Mobile Number">
+                              <select onchange="updateDetails(this, this.nextElementSibling)">
+                                  <option value="">Select Payment Method</option>
+                                  <option value="easypaisa">Easypaisa</option>
+                                  <option value="jazzcash">JazzCash</option>
+                              </select>
+                              <div class="payment-details"></div>
+                              <label>Upload Payment Screenshot:</label>
+                              <input type="file">
+                              <div class="icons">
+                                  <img src="easypaisa.png" alt="Easypaisa">
+                                  <img src="jazzcash.png" alt="JazzCash">
+                              </div>
+                              <button class="buy-btn" onclick="alert('Form submitted (Demo only)')">Submit</button>
+                          </div>`;
+        plansContainer.appendChild(plan);
+    }
+
+    function updateDetails(selectElement, detailsDiv) {
+        if (selectElement.value === "easypaisa") {
+            detailsDiv.innerHTML = "👤 Name: M. Farhan<br>📞 Number: 03319915139";
+        } else if (selectElement.value === "jazzcash") {
+            detailsDiv.innerHTML = "👤 Name: Amir Sohail<br>📞 Number: 03499780098";
+        } else {
+            detailsDiv.innerHTML = "";
+        }
+    }
+</script>
+
+</body>
+</html>
